@@ -1,3 +1,41 @@
 body{
+  background-color: #989898;
+  font-family: Ubuntu, sans-serif;
+}
+
+/* Header */
+
+#main-header {
+  padding-top: 20px;
+  background-color: #39e7f7;
+}
+#header-logo {
+  color: white;
+  font-size: 3em;
+  margin-top: 0px;
+}
+#header-nav {
+  font-size: 1.5em;
+  margin-top: 15px;
+}
+#header-nav > ul > li > a{
+  color: white;
+}
+
+/* Main */
+
+main {
+  padding-top: 50px;
+  min-height: 500px;
   background-color: white;
+}
+
+/* Footer */
+
+#main-footer {
+  color: white;
+  padding-top: 50px;
+}
+#main-footer a {
+  color: white;
 }
