@@ -35,10 +35,12 @@
           <div class="col-md-6 text-right">
             <nav id="header-nav">
               <ul class="list list-inline">
-                <li><a href="#">Hem</a></li>
-                <li><a href="#">Boka resa</a></li>
+                <li><a ui-sref="index" ui-sref-active="active">Hem</a></li>
+                <li><a ui-sref="booking" ui-sref-active="active">Boka resa</a></li>
                 <li><a href="#">Dina bokade resor</a></li>
                 <li><a href="#">Om oss</a></li>
+                <li>|</li>
+                <li><a href="#">Jonas</a></li>
               </ul>
             </nav>
           </div>
@@ -104,6 +106,7 @@
 
   <!-- Angular Controllers -->
   <script src="./scripts/controllers/index.controller.js"></script>
+  <script src="./scripts/controllers/booking.controller.js"></script>
 
   <!-- Angular directives -->
   <script src="./scripts/directives/flex-slideshow.directive.js"></script>
