@@ -1,3 +1,5 @@
+@import url('plugins.css');
+
 body{
   background-color: #989898;
   font-family: Ubuntu, sans-serif;
@@ -25,7 +27,7 @@ body{
 /* Main */
 
 main {
-  padding-top: 50px;
+  padding-top: 20px;
   min-height: 500px;
   background-color: white;
 }
@@ -38,4 +40,24 @@ main {
 }
 #main-footer a {
   color: white;
+}
+
+/* From TrackWork */
+
+.info-header{
+  margin-top: 0;
+  color: rgb(100, 100, 100);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.news-slideshow > li{
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  width: 100%;
+}
+
+.news-article > p{
+  padding-left: 18px;
 }
