@@ -19,6 +19,16 @@ trackworkApp.config(function($stateProvider, $urlRouterProvider) {
       controller: 'BookingController',
       controllerAs: 'booking'
     })
+    .state('booked', {
+      url: '/jonas/bokade-resor',
+      templateUrl: 'partials/booked.template.html',
+      controller: 'BookedController',
+      controllerAs: 'booked'
+    })
+    .state('about', {
+      url: '/info',
+      templateUrl: 'partials/about.template.html'
+    })
     .state('404', {
       url: '/404',
       template: '<h1>404 - Not found</h1>'

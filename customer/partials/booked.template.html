@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Bokade resor</h1>
+      <hr>
+      <p>
+        Här kan du se dina bokade resor. För att avboka en biljett, klicka på knappen 'Avboka' till höger om din resa.
+      </p>
+      <table class="table table-striped">
+        <tr>
+          <th>Avgång(lokal tid)</th>
+          <th>Landar(lokal tid)</th>
+          <th>Destination</th>
+          <th>Flygplan</th>
+          <th>Klass</th>
+          <th>Pris</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="x in [1,2,3]">
+          <td>Okt 25, 2016 20:00</td>
+          <td>Okt 26, 2016 03:00</td>
+          <td>Afrika</td>
+          <td>Boeing 1000</td>
+          <td>Första klass</td>
+          <td>1129:-</td>
+          <td class="text-right"><button class="btn btn-info btn-small">Avboka</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
