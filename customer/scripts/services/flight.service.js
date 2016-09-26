@@ -31,7 +31,7 @@ function FlightService($sessionStorage, $q, $http) {
   }
 
   /**
-   * Books a given flightID
+   * Books a given flightID, sends back a message on the status
    *
    * @param flightID - ID number of the chosen flight
    * @returns promise with a message
