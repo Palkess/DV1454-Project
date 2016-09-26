@@ -25,6 +25,11 @@ body{
   color: white;
 }
 
+/* For active links */
+a.active {
+  text-decoration: underline !important;
+}
+
 /* Main */
 
 main {
