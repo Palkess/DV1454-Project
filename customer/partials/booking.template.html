@@ -10,24 +10,31 @@
         <tr>
           <th>Avgång(lokal tid)</th>
           <th>Landar(lokal tid)</th>
+          <th>Flygplats</th>
           <th>Destination</th>
-          <th>Flygplan</th>
           <th>Första klass</th>
-          <th>Andra klass</th>
+          <th>Business klass</th>
+          <th>Ekonomi klass</th>
           <th></th>
         </tr>
-        <tr ng-repeat="x in [1,2,3,4,5]">
-          <td>Okt 25, 2016 20:00</td>
-          <td>Okt 26, 2016 03:00</td>
-          <td>Afrika</td>
-          <td>Boeing 1000</td>
+        <tr ng-repeat="flight in booking.flights">
+          <td>{{flight.TakeOff | date}}</td>
+          <td>{{flight.Landing | date}}</td>
+          <td>{{flight.Departure}}</td>
+          <td>{{flight.Destination}}</td>
           <td>
-            <input class="radio radio-inline" type="radio" name="group{{x}}" ng-model="booking.flight[x].class" value="first">
-            1489:-</td>
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="first">
+            {{flight.StandardPriceFirstClass}}:- <i>({{flight.FirstClassSeats}})</i>
+          </td>
           <td>
-            <input class="radio radio-inline" type="radio" name="group{{x}}" ng-model="booking.flight[x].class" value="business">
-            1129:-</td>
-          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!booking.flight[x].class">Boka</button></td>
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="business">
+            {{flight.StandardPriceBusiness}}:- <i>({{flight.BusinessSeats}})</i>
+          </td>
+          <td>
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="coach">
+            {{flight.StandardPriceCoach}}:- <i>({{flight.CoachSeats}})</i>
+          </td>
+          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!booking.flight[flight.FlightID].class">Boka</button></td>
         </tr>
       </table>
     </div>
