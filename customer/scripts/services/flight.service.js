@@ -8,7 +8,7 @@ angular
 
 function FlightService($sessionStorage, $q, $http) {
   return {
-    'getFlights': getFlights,
+    'getAllFlights': getAllFlights,
     'bookFlight': bookFlight
   };
 
@@ -17,9 +17,9 @@ function FlightService($sessionStorage, $q, $http) {
    *
    * @returns promise with data
    */
-  function getFlights(){
+  function getAllFlights(){
     return $q(function(resolve, reject){
-      $http.get('')
+      $http.get('scripts/db/db.php?q=getAllFlights')
         .then(function(data){
           // Success
           resolve(data.data);

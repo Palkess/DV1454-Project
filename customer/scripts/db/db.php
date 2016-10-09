@@ -13,7 +13,11 @@ $sql = "";
 /////// Set up statements for input
 //////////////////////////////////////////////
 
-
+if(isset($_GET['q'])){
+  if($_GET['q'] == "getAllFlights"){
+    $sql = "SELECT * FROM v_getAllFlights";
+  }
+}
 
 //////////////////////////////////////////////
 /////// End statements for input
