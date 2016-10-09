@@ -8,6 +8,7 @@ $preferences = json_decode($string, true);
 $connection = mssql_connect($preferences['host'], $preferences['user'], $preferences['password']);
 mssql_select_db($preferences['database'], $connection);
 $sql = "";
+$params = array();
 
 //////////////////////////////////////////////
 /////// Set up statements for input
@@ -16,6 +17,15 @@ $sql = "";
 if(isset($_GET['q'])){
   if($_GET['q'] == "getAllFlights"){
     $sql = "SELECT * FROM v_getAllFlights";
+  }
+
+  if($_GET['q'] == "bookFlight" &&
+    isset($_GET['flightID'])    &&
+    isset($_GET['userID'])      &&
+    isset($_GET['seatType'])
+  )
+  {
+    $sql = "EXEC p_BookFlight @CustomerID = " . $_GET['userID'] . ", @FlightID = " . $_GET['flightID'] . ", @seatType = " . $_GET['seatType'];
   }
 }
 
@@ -36,6 +46,7 @@ if(mssql_num_rows($query)){
     }
   }
 }
+
 
 
 header('Content-type: application/json');
