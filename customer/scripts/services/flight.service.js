@@ -34,12 +34,18 @@ function FlightService($sessionStorage, $q, $http) {
    * Books a given flightID, sends back a message on the status
    *
    * @param flightID - ID number of the chosen flight
+   * @param userID   - ID number of the user
+   * @param seatType - The type of seat chosen
    * @returns promise with a message
    */
-  function bookFlight(flightID){
+  function bookFlight(flightID, userID, seatType){
     return $q(function(resolve, reject){
-      $http.post('', { flightID: flightID })
-        .then(function(data){
+      $http({
+          method: 'GET',
+          url: 'scripts/db/db.php',
+          params: { q:'bookFlight', flightID: flightID, userID: userID, seatType: seatType }
+      })        
+       .then(function(data){
           // Success
           resolve(data.data);
         }, function(data){
@@ -47,5 +53,9 @@ function FlightService($sessionStorage, $q, $http) {
           reject(data.message);
         });
     });
+  }
+
+  function test(){
+    alert("Works");
   }
 }
