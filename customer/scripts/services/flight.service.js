@@ -9,7 +9,9 @@ angular
 function FlightService($sessionStorage, $q, $http) {
   return {
     'getAllFlights': getAllFlights,
-    'bookFlight': bookFlight
+    'getAllBookedFlights': getAllBookedFlights,
+    'bookFlight': bookFlight,
+    'cancelFlight': cancelFlight
   };
 
   /**
@@ -21,6 +23,29 @@ function FlightService($sessionStorage, $q, $http) {
     return $q(function(resolve, reject){
       $http.get('scripts/db/db.php?q=getAllFlights')
         .then(function(data){
+          // Success
+          resolve(data.data);
+        }, function(data){
+          // Error
+          reject(data.message);
+        });
+    });
+  }
+
+  /**
+   * Retrieve all the booked flights based on user
+   *
+   * @param userID   - ID number of the user
+   * @returns promise with a message
+   */
+  function getAllBookedFlights(userID){
+    return $q(function(resolve, reject){
+      $http({
+          method: 'GET',
+          url: 'scripts/db/db.php',
+          params: { q:'getAllBookedFlights', userID: userID }
+      })
+       .then(function(data){
           // Success
           resolve(data.data);
         }, function(data){
@@ -44,7 +69,7 @@ function FlightService($sessionStorage, $q, $http) {
           method: 'GET',
           url: 'scripts/db/db.php',
           params: { q:'bookFlight', flightID: flightID, userID: userID, seatType: seatType }
-      })        
+      })
        .then(function(data){
           // Success
           resolve(data.data);
@@ -55,7 +80,27 @@ function FlightService($sessionStorage, $q, $http) {
     });
   }
 
-  function test(){
-    alert("Works");
+  /**
+   * Cancel a flight
+   *
+   * @param flightID - ID number of the chosen flight
+   * @param userID   - ID number of the user
+   * @returns promise with a message
+   */
+  function cancelFlight(flightID, userID){
+    return $q(function(resolve, reject){
+      $http({
+          method: 'GET',
+          url: 'scripts/db/db.php',
+          params: { q:'cancelFlight', flightID: flightID, userID: userID }
+      })
+       .then(function(data){
+          // Success
+          resolve(data.data);
+        }, function(data){
+          // Error
+          reject(data.message);
+        });
+    });
   }
 }
