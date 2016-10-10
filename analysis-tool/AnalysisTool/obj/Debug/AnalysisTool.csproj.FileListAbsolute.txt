@@ -1,1 +1,12 @@
 C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis_application\AnalysisTool\AnalysisTool\bin\Debug\AnalysisTool.exe.config
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\bin\Debug\AnalysisTool.exe.config
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\bin\Debug\AnalysisTool.exe
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\bin\Debug\AnalysisTool.pdb
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\obj\Debug\AnalysisTool.csprojResolveAssemblyReference.cache
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\obj\Debug\AnalysisTool.MainWindow.resources
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\obj\Debug\AnalysisTool.Properties.Resources.resources
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\obj\Debug\AnalysisTool.csproj.GenerateResource.Cache
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\obj\Debug\AnalysisTool.exe
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\obj\Debug\AnalysisTool.pdb
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\obj\Debug\AnalysisTool.Resource1.resources
+C:\Users\PetLid\Dropbox\_GitHub\DV1454-Project\analysis-tool\AnalysisTool\obj\Debug\AnalysisTool.AboutForm.resources
