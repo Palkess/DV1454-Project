@@ -6,6 +6,10 @@
       <p>
         Här kan du se våra tillgängliga resor. För att boka en biljett, markera vilken klass du vill åka i och klicka sedan på knappen 'Boka' till höger om ditt val.
       </p>
+    </diV>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
       <table class="table table-striped">
         <tr>
           <th>Avgång(lokal tid)</th>
@@ -34,9 +38,18 @@
             <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="0">
             {{flight.StandardPriceCoach}}:- <i>{{flight.CoachSeats}}</i>
           </td>
-          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!booking.flight[flight.FlightID].class" ng-click="booking.bookFlight(flight.FlightID, 1, booking.flight[flight.FlightID].class)">Boka</button></td>
+          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!booking.flight[flight.FlightID].class || !booking.currentCustomer" ng-click="booking.bookFlight(flight.FlightID, booking.currentCustomer, booking.flight[flight.FlightID].class)">Boka</button></td>
         </tr>
       </table>
+    </div>
+
+    <div class="col-md-2">
+      <select class="form-control" ng-model="booking.currentCustomer">
+        <option value="" disabled selected>Välj kund</option>
+        <option ng-repeat="customer in booking.customers" ng-value="customer.CustomerID">
+          {{customer.Name}}
+        </option>
+      </select>
     </div>
   </div>
 </div>

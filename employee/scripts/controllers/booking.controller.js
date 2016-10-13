@@ -5,12 +5,20 @@ angular
 function BookingController($scope, $sessionStorage, FlightService) {
   var vm = this;
 
-
+  vm.customers = [];
   vm.flights = [];
 
   vm.flight = {
     'class': ''
   };
+
+  FlightService.getAllCustomers()
+    .then(function(data){
+      // Success
+      vm.customers = data;
+    }, function(data){
+      // Error
+    });
 
   vm.bookFlight = function(flightID, customerID, seatType){
     FlightService.bookFlight(flightID, customerID, seatType)

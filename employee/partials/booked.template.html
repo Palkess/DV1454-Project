@@ -9,7 +9,7 @@
       <div>
     </div>
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-10">
       <table class="table table-striped">
         <tr>
           <th>Avgång(lokal tid)</th>
@@ -36,7 +36,7 @@
       </table>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
       <select class="form-control" ng-model="booked.currentCustomer" ng-change="booked.showCustomer(booked.currentCustomer)">
         <option value="" disabled selected>Välj kund</option>
         <option ng-repeat="customer in booked.customers" ng-value="customer.CustomerID">
