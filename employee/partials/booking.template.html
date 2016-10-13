@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Boka resa</h1>
+      <hr>
+      <p>
+        Här kan du se våra tillgängliga resor. För att boka en biljett, markera vilken klass du vill åka i och klicka sedan på knappen 'Boka' till höger om ditt val.
+      </p>
+      <table class="table table-striped">
+        <tr>
+          <th>Avgång(lokal tid)</th>
+          <th>Landar(lokal tid)</th>
+          <th>Flygplats</th>
+          <th>Destination</th>
+          <th>Första klass</th>
+          <th>Business klass</th>
+          <th>Ekonomi klass</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="flight in booking.flights">
+          <td>{{flight.TakeOff | date}}</td>
+          <td>{{flight.Landing | date}}</td>
+          <td>{{flight.Departure}}</td>
+          <td>{{flight.Destination}}</td>
+          <td>
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="2">
+            {{flight.StandardPriceFirstClass}}:- <i>{{flight.FirstClassSeats}}</i>
+          </td>
+          <td>
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="1">
+            {{flight.StandardPriceBusiness}}:- <i>{{flight.BusinessSeats}}</i>
+          </td>
+          <td>
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="0">
+            {{flight.StandardPriceCoach}}:- <i>{{flight.CoachSeats}}</i>
+          </td>
+          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!booking.flight[flight.FlightID].class" ng-click="booking.bookFlight(flight.FlightID, 1, booking.flight[flight.FlightID].class)">Boka</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

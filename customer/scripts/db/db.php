@@ -33,7 +33,7 @@ if(isset($_GET['q'])){
     isset($_GET['seatType'])
   )
   {
-    $sql = "EXEC petrus.p_BookFlight @CustomerID = " . $_GET['userID'] . ", @FlightID = " . $_GET['flightID'] . ", @seatType = " . $_GET['seatType'];
+    $sql = "EXEC p_BookFlight @CustomerID = " . $_GET['userID'] . ", @FlightID = " . $_GET['flightID'] . ", @SeatType = " . $_GET['seatType'];
   }
 }
 
