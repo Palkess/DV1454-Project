@@ -289,10 +289,10 @@ namespace AnalysisTool
             // Week_day
             // 
             this.Week_day.Controls.Add(this.chartWeekDay);
-            this.Week_day.Location = new System.Drawing.Point(4, 22);
+            this.Week_day.Location = new System.Drawing.Point(4, 29);
             this.Week_day.Name = "Week_day";
             this.Week_day.Padding = new System.Windows.Forms.Padding(3);
-            this.Week_day.Size = new System.Drawing.Size(556, 176);
+            this.Week_day.Size = new System.Drawing.Size(562, 317);
             this.Week_day.TabIndex = 2;
             this.Week_day.Text = "Week day";
             this.Week_day.UseVisualStyleBackColor = true;
@@ -313,17 +313,17 @@ namespace AnalysisTool
             series3.XValueMember = "Date";
             series3.YValueMembers = "Passengers";
             this.chartWeekDay.Series.Add(series3);
-            this.chartWeekDay.Size = new System.Drawing.Size(550, 170);
+            this.chartWeekDay.Size = new System.Drawing.Size(556, 311);
             this.chartWeekDay.TabIndex = 0;
             this.chartWeekDay.Text = "chart3";
             // 
             // Week
             // 
             this.Week.Controls.Add(this.chartWeek);
-            this.Week.Location = new System.Drawing.Point(4, 22);
+            this.Week.Location = new System.Drawing.Point(4, 29);
             this.Week.Name = "Week";
             this.Week.Padding = new System.Windows.Forms.Padding(3);
-            this.Week.Size = new System.Drawing.Size(556, 176);
+            this.Week.Size = new System.Drawing.Size(562, 317);
             this.Week.TabIndex = 1;
             this.Week.Text = "Week";
             this.Week.UseVisualStyleBackColor = true;
@@ -346,7 +346,7 @@ namespace AnalysisTool
             series2.YValueMembers = "Passengers";
             series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             this.chartWeek.Series.Add(series2);
-            this.chartWeek.Size = new System.Drawing.Size(550, 170);
+            this.chartWeek.Size = new System.Drawing.Size(556, 311);
             this.chartWeek.TabIndex = 0;
             this.chartWeek.Text = "chart2";
             title1.Name = "Title1";
@@ -355,10 +355,10 @@ namespace AnalysisTool
             // Month
             // 
             this.Month.Controls.Add(chartMonth);
-            this.Month.Location = new System.Drawing.Point(4, 22);
+            this.Month.Location = new System.Drawing.Point(4, 29);
             this.Month.Name = "Month";
             this.Month.Padding = new System.Windows.Forms.Padding(3);
-            this.Month.Size = new System.Drawing.Size(562, 324);
+            this.Month.Size = new System.Drawing.Size(562, 317);
             this.Month.TabIndex = 0;
             this.Month.Text = "Month";
             this.Month.UseVisualStyleBackColor = true;
@@ -379,12 +379,13 @@ namespace AnalysisTool
             series1.XValueMember = "Date";
             series1.YValueMembers = "Passengers";
             chartMonth.Series.Add(series1);
-            chartMonth.Size = new System.Drawing.Size(556, 318);
+            chartMonth.Size = new System.Drawing.Size(556, 311);
             chartMonth.TabIndex = 0;
             chartMonth.Text = "chart1";
             // 
             // tabControlDates
             // 
+            this.tabControlDates.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControlDates.Controls.Add(this.Month);
             this.tabControlDates.Controls.Add(this.Week);
             this.tabControlDates.Controls.Add(this.Week_day);
@@ -392,6 +393,7 @@ namespace AnalysisTool
             this.tabControlDates.Location = new System.Drawing.Point(0, 0);
             this.tabControlDates.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlDates.Name = "tabControlDates";
+            this.tabControlDates.Padding = new System.Drawing.Point(10, 5);
             this.tabControlDates.SelectedIndex = 0;
             this.tabControlDates.Size = new System.Drawing.Size(570, 350);
             this.tabControlDates.TabIndex = 0;
