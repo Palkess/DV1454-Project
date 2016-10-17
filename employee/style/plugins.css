@@ -1,0 +1,35 @@
+/* Flex Slider */
+.slideshow {
+    text-align: center;
+    width: 100% !important;
+}
+
+.flexslider {
+    display: block;
+}
+
+.flex-header{
+  font-size: 2em;
+}
+
+.flex-caption {
+  width: 100%;
+  padding: 2%;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 1);
+  font-size: 1.2em;
+  line-height: 18px;
+}
+
+/* Bootstrap */
+.row{
+  margin: 0px !important;
+}
+
+/* Angular */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

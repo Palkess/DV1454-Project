@@ -24,15 +24,15 @@
           <td>{{flight.Destination}}</td>
           <td>
             <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="2">
-            {{flight.StandardPriceFirstClass}}:- <i>({{flight.FirstClassSeats}})</i>
+            {{flight.StandardPriceFirstClass}}:- <i>{{flight.FirstClassSeats}}</i>
           </td>
           <td>
             <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="1">
-            {{flight.StandardPriceBusiness}}:- <i>({{flight.BusinessSeats}})</i>
+            {{flight.StandardPriceBusiness}}:- <i>{{flight.BusinessSeats}}</i>
           </td>
           <td>
             <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="0">
-            {{flight.StandardPriceCoach}}:- <i>({{flight.CoachSeats}})</i>
+            {{flight.StandardPriceCoach}}:- <i>{{flight.CoachSeats}}</i>
           </td>
           <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!booking.flight[flight.FlightID].class" ng-click="booking.bookFlight(flight.FlightID, 1, booking.flight[flight.FlightID].class)">Boka</button></td>
         </tr>
