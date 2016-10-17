@@ -6,43 +6,41 @@
       <p>
         Här kan du se kunders bokade resor. För att avboka en biljett, klicka på knappen 'Avboka' till höger om deras resa.
       </p>
-      <div>
     </div>
     <div class="row">
-      <div class="col-md-10">
-      <table class="table table-striped">
-        <tr>
-          <th>Avgång(lokal tid)</th>
-          <th>Landar(lokal tid)</th>
-          <th>Flygplats</th>
-          <th>Destination</th>
-          <th>Land</th>
-          <th>Klass</th>
-          <th>Pris</th>
-          <th></th>
-        </tr>
-        <tr ng-repeat="flight in booked.flights">
-          <td>{{flight.TakeOff}}</td>
-          <td>{{flight.Landing}}</td>
-          <td>{{flight.Departure}}</td>
-          <td>{{flight.Destination}}</td>
-          <td>{{flight.Country}}</td>
-          <td>{{(flight.Seat == 0 ? "Andra klass" : (flight.Seat == 1 ? "Business klass" : (flight.Seat == 2 ? "Första klass" : "Okänt")))}}</td>
-          <td>{{flight.Price}} :-</td>
-          <td class="text-right">
-            <button class="btn btn-info btn-small" ng-click="booked.cancelFlight(booked.currentCustomer, flight.FlightID)">Avboka</button>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="col-md-2">
-      <select class="form-control" ng-model="booked.currentCustomer" ng-change="booked.showCustomer(booked.currentCustomer)">
-        <option value="" disabled selected>Välj kund</option>
-        <option ng-repeat="customer in booked.customers" ng-value="customer.CustomerID">
-          {{customer.Name + " " + customer.bookedFlights}}
-        </option>
-      </select>
+      <div class="col-md-12">
+        <select ng-model="booked.currentCustomer" ng-change="booked.showCustomer(booked.currentCustomer)">
+          <option value="" disabled selected>Välj kund</option>
+          <option ng-repeat="customer in booked.customers" ng-value="customer.CustomerID">
+            {{customer.Name + " " + customer.bookedFlights}}
+          </option>
+        </select>
+        <hr>
+        <table class="table table-striped">
+          <tr>
+            <th>Avgång(lokal tid)</th>
+            <th>Landar(lokal tid)</th>
+            <th>Flygplats</th>
+            <th>Destination</th>
+            <th>Land</th>
+            <th>Klass</th>
+            <th>Pris</th>
+            <th></th>
+          </tr>
+          <tr ng-repeat="flight in booked.flights">
+            <td>{{flight.TakeOff}}</td>
+            <td>{{flight.Landing}}</td>
+            <td>{{flight.Departure}}</td>
+            <td>{{flight.Destination}}</td>
+            <td>{{flight.Country}}</td>
+            <td>{{(flight.Seat == 0 ? "Andra klass" : (flight.Seat == 1 ? "Business klass" : (flight.Seat == 2 ? "Första klass" : "Okänt")))}}</td>
+            <td>{{flight.Price}} :-</td>
+            <td class="text-right">
+              <button class="btn btn-info btn-small" ng-click="booked.cancelFlight(booked.currentCustomer, flight.FlightID)">Avboka</button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>
