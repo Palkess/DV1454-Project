@@ -19,13 +19,21 @@ if(isset($_GET['q'])){
     $sql = "SELECT * FROM v_getAllFlights";
   }
 
+  if($_GET['q'] == "getAllBookedFlights"){
+    $sql = "SELECT * FROM f_getAllBookedFlights(" . $_GET['userID'] . ")";
+  }
+
+  if($_GET['q'] == "cancelFlight"){
+    $sql = "EXEC p_CancelFlight @FlightID=" . $_GET['flightID'] . ", @CustomerID=" . $_GET['userID'];
+  }
+
   if($_GET['q'] == "bookFlight" &&
     isset($_GET['flightID'])    &&
     isset($_GET['userID'])      &&
     isset($_GET['seatType'])
   )
   {
-    $sql = "EXEC p_BookFlight @CustomerID = " . $_GET['userID'] . ", @FlightID = " . $_GET['flightID'] . ", @seatType = " . $_GET['seatType'];
+    $sql = "EXEC p_BookFlight @CustomerID = " . $_GET['userID'] . ", @FlightID = " . $_GET['flightID'] . ", @SeatType = " . $_GET['seatType'];
   }
 }
 
