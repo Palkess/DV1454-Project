@@ -53,25 +53,10 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DV1454_AirPortDataSet.Designer.cs">
+    <Compile Include="DV1454_DataSetAnalysis.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DV1454_AirPortDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DV1454_AirPortDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DV1454_AirPortDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DV1454_AirPortDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DV1454_AirPortDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DV1454_AirPortDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DV1454_AirPortDataSet3.xsd</DependentUpon>
+      <DependentUpon>DV1454_DataSetAnalysis.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -106,49 +91,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DV1454_AirPortDataSet.xsc">
-      <DependentUpon>DV1454_AirPortDataSet.xsd</DependentUpon>
+    <None Include="DV1454_DataSetAnalysis.xsc">
+      <DependentUpon>DV1454_DataSetAnalysis.xsd</DependentUpon>
     </None>
-    <None Include="DV1454_AirPortDataSet.xsd">
+    <None Include="DV1454_DataSetAnalysis.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DV1454_AirPortDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DV1454_DataSetAnalysis.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DV1454_AirPortDataSet.xss">
-      <DependentUpon>DV1454_AirPortDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DV1454_AirPortDataSet1.xsc">
-      <DependentUpon>DV1454_AirPortDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DV1454_AirPortDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DV1454_AirPortDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DV1454_AirPortDataSet1.xss">
-      <DependentUpon>DV1454_AirPortDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DV1454_AirPortDataSet2.xsc">
-      <DependentUpon>DV1454_AirPortDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="DV1454_AirPortDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DV1454_AirPortDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DV1454_AirPortDataSet2.xss">
-      <DependentUpon>DV1454_AirPortDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="DV1454_AirPortDataSet3.xsc">
-      <DependentUpon>DV1454_AirPortDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="DV1454_AirPortDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DV1454_AirPortDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DV1454_AirPortDataSet3.xss">
-      <DependentUpon>DV1454_AirPortDataSet3.xsd</DependentUpon>
+    <None Include="DV1454_DataSetAnalysis.xss">
+      <DependentUpon>DV1454_DataSetAnalysis.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
