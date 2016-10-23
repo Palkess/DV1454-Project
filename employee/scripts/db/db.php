@@ -39,6 +39,14 @@ if(isset($_GET['q'])){
   {
     $sql = "EXEC p_BookFlight @CustomerID = " . $_GET['userID'] . ", @FlightID = " . $_GET['flightID'] . ", @SeatType = " . $_GET['seatType'];
   }
+
+  if($_GET['q'] == 'getAllAirPorts'){
+    $sql = "SELECT * FROM v_getAllAirPorts";
+  }
+
+  if($_GET['q'] == 'filterFlights'){
+    $sql = "SELECT * FROM f_filterFlights('" . $_GET['destination'] . "','" . ($_GET['takeoff'] . " 00:00:00:00") . "')";
+  }
 }
 
 //////////////////////////////////////////////
