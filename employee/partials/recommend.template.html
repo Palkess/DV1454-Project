@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Sök efter resa</h1>
+      <hr>
+      <p>
+        Välj destination och från vilken dag flyget ska giltigt. Tryck sedan på 'Sök'
+      </p>
+      <form class="form-inline" ng-submit="recommend.searchFlights()">
+        <div class="form-group">
+          <select class="form-control" ng-model="recommend.destination">
+            <option value="" disabled selected>Välj destination</option>
+            <option ng-repeat="destination in recommend.destinations" ng-value="destination.ACR">{{destination.Name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" ng-model="recommend.takeoff" placeholder="Avgång: YYYY-MM-DD" required>
+        </div>
+        <input class="btn btn-info" type="submit" value="Sök">
+      </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row" ng-show="recommend.flights">
+    <div class="col-md-12">
+      <h2>Boka resa</h2>
+      <p>
+        Välj kund och biljett-klass. Tryck sedan på 'Boka'-knappen på ditt val.
+      </p>
+      <select ng-model="recommend.currentCustomer">
+        <option value="" disabled selected>Välj kund</option>
+        <option ng-repeat="customer in recommend.customers" ng-value="customer.CustomerID">
+          {{customer.Name}}
+        </option>
+      </select>
+      <hr>
+      <table class="table table-striped">
+        <tr>
+          <th>Avgång(lokal tid)</th>
+          <th>Landar(lokal tid)</th>
+          <th>Flygplats</th>
+          <th>Destination</th>
+          <th>Första klass</th>
+          <th>Business klass</th>
+          <th>Ekonomi klass</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="flight in recommend.flights">
+          <td>{{flight.TakeOff | date}}</td>
+          <td>{{flight.Landing | date}}</td>
+          <td>{{flight.Departure}}</td>
+          <td>{{flight.Destination}}</td>
+          <td>
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="recommend.flight[flight.FlightID].class" value="2">
+            {{flight.StandardPriceFirstClass}}:- <i>{{flight.FirstClassSeats}}</i>
+          </td>
+          <td>
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="recommend.flight[flight.FlightID].class" value="1">
+            {{flight.StandardPriceBusiness}}:- <i>{{flight.BusinessSeats}}</i>
+          </td>
+          <td>
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="recommend.flight[flight.FlightID].class" value="0">
+            {{flight.StandardPriceCoach}}:- <i>{{flight.CoachSeats}}</i>
+          </td>
+          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!recommend.flight[flight.FlightID].class || !recommend.currentCustomer" ng-click="recommend.bookFlight(flight.FlightID, recommend.currentCustomer, recommend.flight[flight.FlightID].class)">Boka</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

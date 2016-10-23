@@ -25,6 +25,12 @@ trackworkApp.config(function($stateProvider, $urlRouterProvider) {
       controller: 'BookedController',
       controllerAs: 'booked'
     })
+    .state('recommend', {
+      url: '/jonas/rekommendera-resa',
+      templateUrl: 'partials/recommend.template.html',
+      controller: 'RecommendController',
+      controllerAs: 'recommend'
+    })
     .state('about', {
       url: '/info',
       templateUrl: 'partials/about.template.html'
