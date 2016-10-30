@@ -26,7 +26,7 @@
           <td>{{(flight.Seat == 0 ? "Andra klass" : (flight.Seat == 1 ? "Business klass" : (flight.Seat == 2 ? "Första klass" : "Okänt")))}}</td>
           <td>{{flight.Price}} :-</td>
           <td class="text-right">
-            <button class="btn btn-info btn-small" ng-click="booked.cancelFlight(1, flight.FlightID)">Avboka</button>
+            <button class="btn btn-info btn-small" ng-click="booked.cancelFlight(flight.TicketID, 1)">Avboka</button>
           </td>
         </tr>
       </table>

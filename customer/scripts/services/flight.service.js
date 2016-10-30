@@ -160,12 +160,12 @@ function FlightService($sessionStorage, $q, $http) {
    * @param userID   - ID number of the user
    * @returns promise with a message
    */
-  function cancelFlight(flightID, userID){
+  function cancelFlight(ticketID, userID){
     return $q(function(resolve, reject){
       $http({
           method: 'GET',
           url: 'scripts/db/db.php',
-          params: { q:'cancelFlight', flightID: flightID, userID: userID }
+          params: { q:'cancelFlight', ticketID: ticketID, userID: userID }
       })
        .then(function(data){
           // Success

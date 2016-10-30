@@ -19,8 +19,8 @@ function BookedController($scope, $sessionStorage, FlightService) {
       });
   }
 
-  vm.cancelFlight = function(userID, flightID){
-    FlightService.cancelFlight(flightID, userID)
+  vm.cancelFlight = function(ticketID, userID){
+    FlightService.cancelFlight(ticketID, userID)
       .then(function(data){
         // Success
         console.log(data);
