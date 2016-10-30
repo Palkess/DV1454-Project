@@ -23,7 +23,6 @@ function BookingController($scope, $sessionStorage, FlightService) {
       FlightService.getDestinations(vm.departure)
         .then(function(data){
           // Success
-          console.log("Data: " + data);
           vm.destinations = data;
         }, function(data){
           // Error
@@ -42,7 +41,6 @@ function BookingController($scope, $sessionStorage, FlightService) {
       .then(function(data){
         // Success
         vm.destinations = data;
-        console.log(data);
       }, function(data){
         // Error
       });
@@ -50,14 +48,12 @@ function BookingController($scope, $sessionStorage, FlightService) {
   vm.setSeats = function(obj, nr){
       nr = parseInt(nr, 10);
       obj.seats = nr;
-      console.log(obj);
   }
 
   vm.searchFlights = function(){
     FlightService.filterFlights(vm.departure, vm.destination, vm.takeoff)
       .then(function(data){
         // Success
-        console.log("Data: " + data);
         vm.flights = data;
       }, function(data){
         // Error
