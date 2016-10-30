@@ -6,7 +6,8 @@ function RecommendController($scope, $sessionStorage, FlightService) {
   var vm = this;
 
   vm.flight = {
-    'class': ''
+    'class': '',
+    'seats': 0
   };
 
   var today = new Date();
@@ -14,7 +15,17 @@ function RecommendController($scope, $sessionStorage, FlightService) {
 
   $scope.today = date;
 
-  FlightService.getAllDepartures()
+  vm.getDestinations = function(){
+      FlightService.getDestinations(vm.departure)
+        .then(function(data){
+          // Success
+          vm.destinations = data;
+        }, function(data){
+          // Error
+        });
+  }
+
+  FlightService.getDepartures()
     .then(function(data){
       // Success
       vm.departures = data;
@@ -22,7 +33,7 @@ function RecommendController($scope, $sessionStorage, FlightService) {
       // Error
     });
 
-    FlightService.getAllDestinations()
+    FlightService.getDestinations()
       .then(function(data){
         // Success
         vm.destinations = data;
@@ -48,6 +59,11 @@ function RecommendController($scope, $sessionStorage, FlightService) {
         // Error
       });
   };
+
+  vm.setSeats = function(obj, nr){
+      nr = parseInt(nr, 10);
+      obj.seats = nr;
+  }
 
   vm.bookFlight = function(flightID, customerID, seatType){
     FlightService.bookFlight(flightID, customerID, seatType)

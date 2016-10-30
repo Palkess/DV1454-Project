@@ -8,7 +8,7 @@
       </p>
       <form class="form-inline" ng-submit="recommend.searchFlights()">
         <div class="form-group">
-          <select class="form-control" ng-model="recommend.departure">
+          <select class="form-control" ng-model="recommend.departure" ng-change="recommend.getDestinations()">
             <option value="" disabled selected>Välj avgång</option>
             <option ng-repeat="departure in recommend.departures" ng-value="departure.ACR">{{departure.Name}}</option>
           </select>
@@ -55,18 +55,18 @@
           <td>{{flight.Departure}}</td>
           <td>{{flight.Destination}}</td>
           <td>
-            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="recommend.flight[flight.FlightID].class" value="2">
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="recommend.flight[flight.FlightID].class" ng-change="recommend.setSeats(recommend.flight[flight.FlightID], flight.FirstClassSeats)" value="2">
             {{flight.StandardPriceFirstClass}}:- <i>{{flight.FirstClassSeats}}</i>
           </td>
           <td>
-            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="recommend.flight[flight.FlightID].class" value="1">
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="recommend.flight[flight.FlightID].class" ng-change="recommend.setSeats(recommend.flight[flight.FlightID], flight.BusinessSeats)"  value="1">
             {{flight.StandardPriceBusiness}}:- <i>{{flight.BusinessSeats}}</i>
           </td>
           <td>
-            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="recommend.flight[flight.FlightID].class" value="0">
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="recommend.flight[flight.FlightID].class" ng-change="recommend.setSeats(recommend.flight[flight.FlightID], flight.CoachSeats)" value="0">
             {{flight.StandardPriceCoach}}:- <i>{{flight.CoachSeats}}</i>
           </td>
-          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!recommend.flight[flight.FlightID].class || !recommend.currentCustomer" ng-click="recommend.bookFlight(flight.FlightID, recommend.currentCustomer, recommend.flight[flight.FlightID].class)">Boka</button></td>
+          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!recommend.flight[flight.FlightID].class || !recommend.currentCustomer || recommend.flight[flight.FlightID].seats <= 0" ng-click="recommend.bookFlight(flight.FlightID, recommend.currentCustomer, recommend.flight[flight.FlightID].class)">Boka</button></td>
         </tr>
       </table>
     </div>

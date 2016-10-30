@@ -44,12 +44,26 @@ if(isset($_GET['q'])){
     $sql = "SELECT * FROM v_getAllAirPorts";
   }
 
-  if($_GET['q'] == 'getAllDestinations'){
-    $sql = "SELECT * FROM v_getAllDestinations";
+  if($_GET['q'] == 'getDestinations'){
+
+      $arg = 'NULL';
+
+      if(isset($_GET['departure'])) {
+          $arg = "'" . $_GET['departure'] . "'";
+      }
+
+    $sql = "SELECT * FROM f_getDestinations($arg)";
   }
 
-  if($_GET['q'] == 'getAllDepartures'){
-    $sql = "SELECT * FROM v_getAllDepartures";
+  if($_GET['q'] == 'getDepartures'){
+
+      $arg = 'NULL';
+
+      if(isset($_GET['destination'])) {
+          $arg = "'" . $_GET['destination']. "'";
+      }
+
+    $sql = "SELECT * FROM f_getDepartures($arg)";
   }
 
   if($_GET['q'] == 'filterFlights'){
@@ -57,7 +71,7 @@ if(isset($_GET['q'])){
   }
 
   if($_GET['q'] == 'filterFlights_new'){
-    $sql = "SELECT * FROM f_filterFlights('" . $_GET['destination'] . "','" . ($_GET['takeoff'] . " 00:00:00:00") . "')";
+    $sql = "SELECT * FROM f_filterFlights_new('" . $_GET['departure'] . "','" . $_GET['destination'] . "','" . ($_GET['takeoff'] . " 00:00:00:00") . "')";
   }
 }
 
