@@ -12,6 +12,8 @@ function FlightService($sessionStorage, $q, $http) {
     'getAllBookedFlights': getAllBookedFlights,
     'getAllCustomers': getAllCustomers,
     'getAllAirPorts': getAllAirPorts,
+    'getAllDepartures': getAllDepartures,
+    'getAllDestinations': getAllDestinations,
     'filterFlights': filterFlights,
     'bookFlight': bookFlight,
     'cancelFlight': cancelFlight
@@ -99,17 +101,54 @@ function FlightService($sessionStorage, $q, $http) {
   }
 
   /**
+   * Requests all active departures
+   *
+   * @returns promise with data
+   */
+  function getAllDepartures(){
+    return $q(function(resolve, reject){
+      $http.get('scripts/db/db.php?q=getAllDepartures')
+        .then(function(data){
+          // Success
+          resolve(data.data);
+        }, function(data){
+          // Error
+          reject(data.message);
+        });
+    });
+  }
+
+  /**
+   * Requests all active destinations
+   *
+   * @returns promise with data
+   */
+  function getAllDestinations(){
+    return $q(function(resolve, reject){
+      $http.get('scripts/db/db.php?q=getAllDestinations')
+        .then(function(data){
+          // Success
+          resolve(data.data);
+        }, function(data){
+          // Error
+          reject(data.message);
+        });
+    });
+  }
+
+  /**
    * Filter flights
    *
    * @returns promise with a message
    */
-  function filterFlights(destination, takeoff){
+  function filterFlights(departure, destination, takeoff){
     return $q(function(resolve, reject){
       $http({
           method: 'GET',
           url: 'scripts/db/db.php',
           params: {
-            q:'filterFlights',
+            q:'filterFlights_new',
+            departure: departure,
             destination: destination,
             takeoff: takeoff
            }

@@ -4,17 +4,21 @@
       <h1>Sök efter resa</h1>
       <hr>
       <p>
-        Välj destination och från vilken dag flyget ska giltigt. Tryck sedan på 'Sök'
+        Välj avgång, destination och från vilken dag flyget ska giltigt. Tryck sedan på 'Sök'.
       </p>
       <form class="form-inline" ng-submit="recommend.searchFlights()">
         <div class="form-group">
+          <select class="form-control" ng-model="recommend.departure">
+            <option value="" disabled selected>Välj avgång</option>
+            <option ng-repeat="departure in recommend.departures" ng-value="departure.ACR">{{departure.Name}}</option>
+          </select>
           <select class="form-control" ng-model="recommend.destination">
             <option value="" disabled selected>Välj destination</option>
             <option ng-repeat="destination in recommend.destinations" ng-value="destination.ACR">{{destination.Name}}</option>
           </select>
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" ng-model="recommend.takeoff" placeholder="Avgång: YYYY-MM-DD" required>
+          <input class="form-control" type="text" ng-model="today" placeholder="Avgång: YYYY-MM-DD" required>
         </div>
         <input class="btn btn-info" type="submit" value="Sök">
       </form>
@@ -38,7 +42,7 @@
         <tr>
           <th>Avgång(lokal tid)</th>
           <th>Landar(lokal tid)</th>
-          <th>Flygplats</th>
+          <th>Avgår ifrån</th>
           <th>Destination</th>
           <th>Första klass</th>
           <th>Business klass</th>

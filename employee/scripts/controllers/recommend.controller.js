@@ -9,13 +9,26 @@ function RecommendController($scope, $sessionStorage, FlightService) {
     'class': ''
   };
 
-  FlightService.getAllAirPorts()
+  var today = new Date();
+  var date = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
+
+  $scope.today = date;
+
+  FlightService.getAllDepartures()
     .then(function(data){
       // Success
-      vm.destinations = data;
+      vm.departures = data;
     }, function(data){
       // Error
     });
+
+    FlightService.getAllDestinations()
+      .then(function(data){
+        // Success
+        vm.destinations = data;
+      }, function(data){
+        // Error
+      });
 
   FlightService.getAllCustomers()
     .then(function(data){
@@ -26,10 +39,10 @@ function RecommendController($scope, $sessionStorage, FlightService) {
     });
 
   vm.searchFlights = function(){
-    FlightService.filterFlights(vm.destination, vm.takeoff)
+    FlightService.filterFlights(vm.departure, vm.destination, vm.takeoff)
       .then(function(data){
         // Success
-        console.log("erer");
+        console.log("Data: " + data);
         vm.flights = data;
       }, function(data){
         // Error
@@ -46,9 +59,10 @@ function RecommendController($scope, $sessionStorage, FlightService) {
         console.log("Error: " + data);
       });
 
-    FlightService.filterFlights(vm.destination, vm.takeoff)
+    FlightService.filterFlights(vm.departure, vm.destination, vm.takeoff)
       .then(function(data){
         // Success
+
         vm.flights = data;
       }, function(data){
         // Error

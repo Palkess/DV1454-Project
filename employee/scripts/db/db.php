@@ -44,7 +44,19 @@ if(isset($_GET['q'])){
     $sql = "SELECT * FROM v_getAllAirPorts";
   }
 
+  if($_GET['q'] == 'getAllDestinations'){
+    $sql = "SELECT * FROM v_getAllDestinations";
+  }
+
+  if($_GET['q'] == 'getAllDepartures'){
+    $sql = "SELECT * FROM v_getAllDepartures";
+  }
+
   if($_GET['q'] == 'filterFlights'){
+    $sql = "SELECT * FROM f_filterFlights('" . $_GET['destination'] . "','" . ($_GET['takeoff'] . " 00:00:00:00") . "')";
+  }
+
+  if($_GET['q'] == 'filterFlights_new'){
     $sql = "SELECT * FROM f_filterFlights('" . $_GET['destination'] . "','" . ($_GET['takeoff'] . " 00:00:00:00") . "')";
   }
 }
