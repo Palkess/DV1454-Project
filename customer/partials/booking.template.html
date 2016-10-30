@@ -4,8 +4,27 @@
       <h1>Boka resa</h1>
       <hr>
       <p>
-        Här kan du se våra tillgängliga resor. För att boka en biljett, markera vilken klass du vill åka i och klicka sedan på knappen 'Boka' till höger om ditt val.
+        Här kan du se våra tillgängliga resor.
+        Välj avgång, destination och från vilken dag flyget ska giltigt. Tryck sedan på 'Sök'.
+        För att boka en biljett, markera vilken klass du vill åka i och klicka sedan på knappen 'Boka' till höger om ditt val.
       </p>
+      <form class="form-inline" ng-submit="booking.searchFlights()">
+        <div class="form-group">
+          <select class="form-control" ng-model="booking.departure" ng-change="booking.getDestinations()">
+            <option value="" disabled selected>Välj avgång</option>
+            <option ng-repeat="departure in booking.departures" ng-value="departure.ACR">{{departure.Name}}</option>
+          </select>
+          <select class="form-control" ng-model="booking.destination">
+            <option value="" disabled selected>Välj destination</option>
+            <option ng-repeat="destination in booking.destinations" ng-value="destination.ACR">{{destination.Name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" ng-model="today" placeholder="Avgång: YYYY-MM-DD" required>
+        </div>
+        <input class="btn btn-info" type="submit" value="Sök">
+      </form>
+      <hr>
       <table class="table table-striped">
         <tr>
           <th>Avgång(lokal tid)</th>
@@ -23,18 +42,18 @@
           <td>{{flight.Departure}}</td>
           <td>{{flight.Destination}}</td>
           <td>
-            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="2">
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" ng-change="booking.setSeats(booking.flight[flight.FlightID], flight.FirstClassSeats)" value="2">
             {{flight.StandardPriceFirstClass}}:- <i>{{flight.FirstClassSeats}}</i>
           </td>
           <td>
-            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="1">
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" ng-change="booking.setSeats(booking.flight[flight.FlightID], flight.BusinessSeats)"  value="1">
             {{flight.StandardPriceBusiness}}:- <i>{{flight.BusinessSeats}}</i>
           </td>
           <td>
-            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" value="0">
+            <input class="radio radio-inline" type="radio" name="group{{flight.FlightID}}" ng-model="booking.flight[flight.FlightID].class" ng-change="booking.setSeats(booking.flight[flight.FlightID], flight.CoachSeats)" value="0">
             {{flight.StandardPriceCoach}}:- <i>{{flight.CoachSeats}}</i>
           </td>
-          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!booking.flight[flight.FlightID].class" ng-click="booking.bookFlight(flight.FlightID, 1, booking.flight[flight.FlightID].class)">Boka</button></td>
+          <td class="text-right"><button class="btn btn-info btn-small" ng-disabled="!booking.flight[flight.FlightID].class || booking.flight[flight.FlightID].seats == 0" ng-click="booking.bookFlight(flight.FlightID, 1, booking.flight[flight.FlightID].class)">Boka</button></td>
         </tr>
       </table>
     </div>

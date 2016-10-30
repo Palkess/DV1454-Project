@@ -5,11 +5,63 @@ angular
 function BookingController($scope, $sessionStorage, FlightService) {
   var vm = this;
 
+  vm.seats = 0;
 
   vm.flights = [];
 
   vm.flight = {
-    'class': ''
+    'class': '',
+    'seats': 0
+  };
+
+  var today = new Date();
+  var date = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
+
+  $scope.today = date;
+
+  vm.getDestinations = function(){
+      FlightService.getDestinations(vm.departure)
+        .then(function(data){
+          // Success
+          console.log("Data: " + data);
+          vm.destinations = data;
+        }, function(data){
+          // Error
+        });
+  }
+
+  FlightService.getDepartures()
+    .then(function(data){
+      // Success
+      vm.departures = data;
+    }, function(data){
+      // Error
+    });
+
+    FlightService.getDestinations()
+      .then(function(data){
+        // Success
+        vm.destinations = data;
+        console.log(data);
+      }, function(data){
+        // Error
+      });
+
+  vm.setSeats = function(obj, nr){
+      nr = parseInt(nr, 10);
+      obj.seats = nr;
+      console.log(obj);
+  }
+
+  vm.searchFlights = function(){
+    FlightService.filterFlights(vm.departure, vm.destination, vm.takeoff)
+      .then(function(data){
+        // Success
+        console.log("Data: " + data);
+        vm.flights = data;
+      }, function(data){
+        // Error
+      });
   };
 
   vm.bookFlight = function(flightID, customerID, seatType){
@@ -24,16 +76,4 @@ function BookingController($scope, $sessionStorage, FlightService) {
         console.log("Error: " + data);
       });
   };
-
-
-
-  FlightService.getAllFlights()
-    .then(function(data){
-      // Success
-      console.log(data);
-      vm.flights = data;
-    }, function(data){
-      // Error
-      console.log("Error: " + data);
-    });
 }

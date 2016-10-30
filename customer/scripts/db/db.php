@@ -35,6 +35,38 @@ if(isset($_GET['q'])){
   {
     $sql = "EXEC p_BookFlight @CustomerID = " . $_GET['userID'] . ", @FlightID = " . $_GET['flightID'] . ", @SeatType = " . $_GET['seatType'];
   }
+
+
+    if($_GET['q'] == 'getDestinations'){
+
+        $arg = 'NULL';
+
+        if(isset($_GET['departure'])) {
+            $arg = "'" . $_GET['departure'] . "'";
+        }
+
+      $sql = "SELECT * FROM f_getDestinations($arg)";
+    }
+
+    if($_GET['q'] == 'getDepartures'){
+
+        $arg = 'NULL';
+
+        if(isset($_GET['destination'])) {
+            $arg = "'" . $_GET['destination']. "'";
+        }
+
+      $sql = "SELECT * FROM f_getDepartures($arg)";
+    }
+
+    if($_GET['q'] == 'filterFlights'){
+      $sql = "SELECT * FROM f_filterFlights('" . $_GET['destination'] . "','" . ($_GET['takeoff'] . " 00:00:00:00") . "')";
+    }
+
+    if($_GET['q'] == 'filterFlights_new'){
+      $sql = "SELECT * FROM f_filterFlights_new('" . $_GET['departure'] . "','" . $_GET['destination'] . "','" . ($_GET['takeoff'] . " 00:00:00:00") . "')";
+    }
+
 }
 
 //////////////////////////////////////////////
