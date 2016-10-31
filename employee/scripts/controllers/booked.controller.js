@@ -38,18 +38,17 @@ function BookedController($scope, $sessionStorage, FlightService) {
       });
   }
 
-  vm.cancelFlight = function(userID, flightID){
-    FlightService.cancelFlight(flightID, userID)
-      .then(function(data){
+  vm.cancelFlight = function(ticketID, userID){
+    FlightService.cancelFlight(ticketID, userID)
+    .then(function(data){
         // Success
         console.log(data);
         alert("Ditt flyg har blivit avbokat!");
         updateFlights();
-        getCustomers();
-      }, function(data){
-        // Error
-      });
-  };
+    }, function(data){
+    // Error
+    });
+};
 
   getCustomers();
 }

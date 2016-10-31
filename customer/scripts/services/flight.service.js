@@ -11,6 +11,9 @@ function FlightService($sessionStorage, $q, $http) {
     'getAllFlights': getAllFlights,
     'getAllBookedFlights': getAllBookedFlights,
     'bookFlight': bookFlight,
+    'getDestinations': getDestinations,
+    'getDepartures': getDepartures,
+    'filterFlights': filterFlights,
     'cancelFlight': cancelFlight
   };
 
@@ -56,6 +59,76 @@ function FlightService($sessionStorage, $q, $http) {
   }
 
   /**
+   * Requests all active departures
+   *
+   * @returns promise with data
+   */
+  function getDepartures(){
+    return $q(function(resolve, reject){
+      $http.get('scripts/db/db.php?q=getDepartures')
+        .then(function(data){
+          // Success
+          resolve(data.data);
+        }, function(data){
+          // Error
+          reject(data.message);
+        });
+    });
+  }
+
+  /**
+   * Requests all active destinations
+   *
+   * @returns promise with data
+   */
+  function getDestinations(departure){
+    return $q(function(resolve, reject){
+        $http({
+            method: 'GET',
+            url: 'scripts/db/db.php',
+            params: {
+              q:'getDestinations',
+              departure: departure,
+             }
+        })
+        .then(function(data){
+          // Success
+          resolve(data.data);
+        }, function(data){
+          // Error
+          reject(data.message);
+        });
+    });
+  }
+
+  /**
+   * Filter flights
+   *
+   * @returns promise with a message
+   */
+  function filterFlights(departure, destination, takeoff){
+    return $q(function(resolve, reject){
+      $http({
+          method: 'GET',
+          url: 'scripts/db/db.php',
+          params: {
+            q:'filterFlights_new',
+            departure: departure,
+            destination: destination,
+            takeoff: takeoff
+           }
+      })
+       .then(function(data){
+          // Success
+          resolve(data.data);
+        }, function(data){
+          // Error
+          reject(data.message);
+        });
+    });
+  }
+
+  /**
    * Books a given flightID, sends back a message on the status
    *
    * @param flightID - ID number of the chosen flight
@@ -87,12 +160,12 @@ function FlightService($sessionStorage, $q, $http) {
    * @param userID   - ID number of the user
    * @returns promise with a message
    */
-  function cancelFlight(flightID, userID){
+  function cancelFlight(ticketID, userID){
     return $q(function(resolve, reject){
       $http({
           method: 'GET',
           url: 'scripts/db/db.php',
-          params: { q:'cancelFlight', flightID: flightID, userID: userID }
+          params: { q:'cancelFlight', ticketID: ticketID, userID: userID }
       })
        .then(function(data){
           // Success
